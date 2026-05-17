@@ -8,7 +8,7 @@
 a={1,1,12,3,4,6,7,8,765,4,32,4,67}
 b={23,4,5,6,7,8,8}
 print(a)
-
+print(type(a))
 # accessing -no
 # adding items
 a.add(22)
