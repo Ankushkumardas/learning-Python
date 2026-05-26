@@ -24,3 +24,11 @@ print(a)
 
 print(a.keys())
 print(a.values())
+
+
+a={'name':'ank','age':22}
+print(a.items())
+
+for i,j in a.items():
+    print(i,end=" ")
+# in 
