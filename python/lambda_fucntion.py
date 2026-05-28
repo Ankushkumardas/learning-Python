@@ -59,7 +59,7 @@ print(a)
 
 
 
-# list comprehension --> [expression for item in iterable]
+# list comprehension --> [expression for item in iterable] [expression for item in iterable if condition] [true_value if condition else false_value for item in iterable]
 a=[1,2,3,4,5,6,7,8,9,10]
 
 b=[x%2==0 for x in a]
