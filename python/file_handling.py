@@ -23,3 +23,23 @@ from requests.sessions import default_headers
 # # print(a.read())
 # a.close()
 
+
+# If you forget:
+
+# file = open("user.json", "r")
+# data = file.read()
+
+# # forgot file.close()
+
+# the file remains open and consumes system resources.
+
+# --> Using with:
+
+# with open("user.json", "r") as file:
+#     data = file.read()
+
+# Python automatically closes the file after the block finishes.
+
+with open('sales_register.csv','a') as a:
+    # print(a.read())
+    a.write("\n thi sis teh new with statemtn append in write append")
