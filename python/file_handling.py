@@ -13,7 +13,13 @@ from requests.sessions import default_headers
 # 'r'--> read is by default_headers
 # 'w'--> write -it will erase old one and create new file and if not file is there and will craete a new file and write there 
 # 'a'--> append -it will add or append to the end of the file if file is not there it will create a new file and append there
-a=open("sales_register.csv","a")
-a.write("\n this i steh test write ")
-# print(a.read())
-a.close()
+# x-- craeet a ne file and if already file is there it will give an error 
+# t --text mode 
+# 'b'-- binary mode 
+
+
+# a=open("sales_register.csv","a")
+# a.write("\n this i steh test write ")
+# # print(a.read())
+# a.close()
+

@@ -51,3 +51,8 @@ for i in b.split():
     # print(i.capitalize(),end="")
     print(i.capitalize())
     
+
+# list comprehenssion -- [expression for item in iterable if condition] or [true_value if condition else false_value for item in iterable]
+a=[2,3,4,5,6,7,8,9]
+s=[x**2 for x in a if x%2==0]
+print(s)
