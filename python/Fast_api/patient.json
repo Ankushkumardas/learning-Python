@@ -1,0 +1,47 @@
+{
+    "P001": {
+        "name": "ANk",
+        "city": "dasd",
+        "age": 22,
+        "gender": "female",
+        "height": 1.34,
+        "weight": 34,
+        "verdict": "Obesity"
+    },
+    "P002": {
+        "name": "Ankshita",
+        "city": "Patna",
+        "age": 22,
+        "gender": "female",
+        "height": 1.60,
+        "weight": 65,
+        "verdict": "Normal"
+    },
+    "P003": {
+        "name": "Riya",
+        "city": "Kolkata",
+        "age": 22,
+        "gender": "female",
+        "height": 1.60,
+        "weight": 50,
+        "verdict": "OverWeight"
+    },
+    "P004": {
+        "name": "Amit",
+        "city": "Delhi",
+        "age": 22,
+        "gender": "male",
+        "height": 1.80,
+        "weight": 90,
+        "verdict": "Obesity"
+    },
+    "P005": {
+        "name": "Ayush",
+        "city": "Lucknow",
+        "age": 22,
+        "gender": "male",
+        "height": 1.70,
+        "weight": 60,
+        "verdict": "Normal"
+    }
+}

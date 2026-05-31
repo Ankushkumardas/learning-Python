@@ -1,0 +1,6 @@
+the Startlet and pydantic combined amde teh FastAPI
+FastAPI are the modern, fast (high-performance), easy-to-learn, easy-to-use, production-ready Python web framework for building APIs.
+In fastapi teh startlette is the core which handles teh HTTP requests and responses and the pydantic is used for data validation and serialization.
+
+SGI or ASGI stands for (Asynchronous Server Gateway Interface): is a specification that defines how an application should communicate with a web server in an asynchronous manner.
+with teh SGI teh webserver communicate with teh application with teh api and code and establishes a 2 way commincation
