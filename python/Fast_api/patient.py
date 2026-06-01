@@ -39,8 +39,10 @@ def sort_data(sort_by:str = Query(...,description="description for sort"),order:
         raise HTTPException(status_code=404,detail="invalid order fiedl for query")
     data=load_data()
     sort_order=True if order=="desc" else False
-    print(data.values())
+    # print(data.values())
     sorted_data=sorted(data.values(),key=lambda x:x.get(sort_by),reverse=sort_order)
+    # for i in data.values():
+    #     print(i["name"])
     return sorted_data
 
      
