@@ -58,5 +58,6 @@ def add_data(pateinet1:A):
 data={"name":"ankush","age":60,"weight":110,"contact_details":{"city":"delhi","country":"india","email":"test@hdfc.com","phone":"234567888"},"allergies":["a","b","c"],"email":"test@hdfc.com","url":"https://www.youtube.com/watch?v=lRArylZCeOs&list=PLKnIA16_RmvZ41tjbKB2ZnwchfniNsMuQ&index=5"}
 
 pateinet1=A(**data)
+# validated pateient1 data to A  and than sending as props to fucntion def add_data
 
 add_data(pateinet1)

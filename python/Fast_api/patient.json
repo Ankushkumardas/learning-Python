@@ -1,47 +1,52 @@
 {
     "P001": {
-        "name": "ANk",
-        "city": "dasd",
-        "age": 22,
-        "gender": "female",
-        "height": 1.34,
-        "weight": 34,
-        "verdict": "Obesity"
+        "name": "ank",
+        "city": "test",
+        "age": 11,
+        "gender": "male",
+        "height": 123.0,
+        "weight": 41.0,
+        "bmi": 27.1,
+        "verdict": "Over weight"
     },
     "P002": {
         "name": "Ankshita",
         "city": "Patna",
         "age": 22,
         "gender": "female",
-        "height": 1.60,
-        "weight": 65,
-        "verdict": "Normal"
+        "height": 1.6,
+        "weight": 65.0,
+        "bmi": 25.39,
+        "verdict": "Over weight"
     },
     "P003": {
         "name": "Riya",
         "city": "Kolkata",
         "age": 22,
         "gender": "female",
-        "height": 1.60,
-        "weight": 50,
-        "verdict": "OverWeight"
+        "height": 1.6,
+        "weight": 50.0,
+        "bmi": 19.53,
+        "verdict": "Normal"
     },
     "P004": {
         "name": "Amit",
         "city": "Delhi",
         "age": 22,
         "gender": "male",
-        "height": 1.80,
-        "weight": 90,
-        "verdict": "Obesity"
+        "height": 1.8,
+        "weight": 90.0,
+        "bmi": 27.78,
+        "verdict": "Over weight"
     },
     "P005": {
         "name": "Ayush",
         "city": "Lucknow",
         "age": 22,
         "gender": "male",
-        "height": 1.70,
-        "weight": 60,
+        "height": 1.7,
+        "weight": 60.0,
+        "bmi": 20.76,
         "verdict": "Normal"
     }
 }
