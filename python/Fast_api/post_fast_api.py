@@ -121,4 +121,11 @@ def update_patch_data(id:str,patient:PatientUpdate):
     
     return JSONResponse(status_code=200,content={"message": f"Data updated partially with patch api call data: {data[id]}"})
 
-         
+@app.delete("/patient/{id}")
+def del_data(id:str):
+    data=load_data()
+    if id not in data:
+        raise HTTPException(status_code=400,detail=f"no data found to dleet on  thi sid  {id}")
+    del(data[id])
+    save_data(data)
+    return JSONResponse(status_code=201,content={"message":f"patient fdata delete on id {id} "})

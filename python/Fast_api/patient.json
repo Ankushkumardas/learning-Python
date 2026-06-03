@@ -1,14 +1,4 @@
 {
-    "P001": {
-        "name": "ank",
-        "city": "test",
-        "age": 11,
-        "gender": "male",
-        "height": 123.0,
-        "weight": 41.0,
-        "bmi": 27.1,
-        "verdict": "Over weight"
-    },
     "P002": {
         "name": "Ankshita",
         "city": "Patna",
