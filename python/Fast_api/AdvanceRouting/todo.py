@@ -38,7 +38,7 @@ def create_todo(data: TodoCreate):
 class TodogetOut(BaseModel):
     todo: list[Todo]
     msg: str
-    api_count=int
+    api_count: int
     
 @router.get("/")
 def get_data(Request:Request):

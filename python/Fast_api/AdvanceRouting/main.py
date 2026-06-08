@@ -30,10 +30,16 @@
 # ✅ Return Custom Responses
 
 
+# implementing rate limiting using teh pacjage "slowapi"
+
 from fastapi import APIRouter,Request
 from fastapi import FastAPI, status, HTTPException
-from AdvanceRouting.user import router as user_router
-from AdvanceRouting.todo import router as todo_router
+from user import router as user_router
+from todo import router as todo_router
+from slowapi import Limiter 
+from slowapi.util import get_remote_address 
+from slowapi.middleware import SlowAPIMiddleware 
+from slowapi.errors import RateLimitExceeded
 
 app = FastAPI()
 # state varible -> and if you wnat to accessthis variable in any otehr file you can acces it from teh request of teh fast api module [Request->Request.app]
