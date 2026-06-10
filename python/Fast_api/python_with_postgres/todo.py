@@ -16,4 +16,3 @@ async def lifespan(app: FastAPI):
 
 # fast api call
 app=FastAPI(lifespan=lifespan)
-
