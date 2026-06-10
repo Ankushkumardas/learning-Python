@@ -2,6 +2,7 @@
   "venvPath": ".",
   "venv": ".venv",
   "extraPaths": [
-    "AdvanceRouting"
+    "AdvanceRouting",
+    "python_with_postgres"
   ]
 }
