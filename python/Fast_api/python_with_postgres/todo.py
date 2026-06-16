@@ -2,12 +2,10 @@ from contextlib import asynccontextmanager
 from datetime import datetime
 from typing import Optional
 from uuid import UUID
-
 from fastapi import Depends, FastAPI, HTTPException, status
 from pydantic import BaseModel, Field
 from sqlalchemy import select, text
 from sqlalchemy.ext.asyncio import AsyncSession
-
 from config.db import DEFAULT_SCHEMA_NAME, Base, engine, get_db
 from models.model import TodoModel
 
@@ -50,11 +48,12 @@ class TodoResponse(TodoBase):
 # CRUD Routes
 @app.post("/todos", response_model=TodoResponse, status_code=status.HTTP_201_CREATED)
 async def create_todo(todo_in: TodoCreate, db: AsyncSession = Depends(get_db)):
-    todo = TodoModel(
-        name=todo_in.name,
-        category=todo_in.category,
-        status=todo_in.status
-    )
+    # todo = TodoModel(
+    #     name=todo_in.name,
+    #     category=todo_in.category,
+    #     status=todo_in.status
+    # )
+    todo=TodoModel(**todo_in.model_dump())
     db.add(todo)
     await db.commit()
     await db.refresh(todo)
