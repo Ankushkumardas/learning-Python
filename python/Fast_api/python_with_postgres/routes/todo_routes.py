@@ -1,27 +1,14 @@
-from contextlib import asynccontextmanager
 from datetime import datetime
 from typing import Optional
 from uuid import UUID
-from fastapi import Depends, FastAPI, HTTPException, status
+from fastapi import APIRouter, Depends, HTTPException, status
 from pydantic import BaseModel, Field
-from sqlalchemy import select, text
+from sqlalchemy import select
 from sqlalchemy.ext.asyncio import AsyncSession
-from config.db import DEFAULT_SCHEMA_NAME, Base, engine, get_db
+from config.db import get_db
 from models.model import TodoModel
 
-# Lifespan context manager for startup and shutdown
-@asynccontextmanager
-async def lifespan(app: FastAPI):
-    print("Application Started")
-    async with engine.begin() as conn:
-        await conn.execute(text(f'CREATE SCHEMA IF NOT EXISTS "{DEFAULT_SCHEMA_NAME}"'))
-        await conn.run_sync(Base.metadata.create_all)
-    yield
-    
-    await engine.dispose()
-    print("Application stopped")
-
-app = FastAPI(lifespan=lifespan)
+todo_routes = APIRouter(prefix="/todos", tags=["Todos"])
 
 # Pydantic schemas
 class TodoBase(BaseModel):
@@ -46,27 +33,21 @@ class TodoResponse(TodoBase):
         from_attributes = True
 
 # CRUD Routes
-@app.post("/todos", response_model=TodoResponse, status_code=status.HTTP_201_CREATED)
+@todo_routes.post("", response_model=TodoResponse, status_code=status.HTTP_201_CREATED)
 async def create_todo(todo_in: TodoCreate, db: AsyncSession = Depends(get_db)):
-    # todo = TodoModel(
-    #     name=todo_in.name,
-    #     category=todo_in.category,
-    #     status=todo_in.status
-    # )
-    todo=TodoModel(**todo_in.model_dump())
+    todo = TodoModel(**todo_in.model_dump())
     db.add(todo)
     await db.commit()
     await db.refresh(todo)
     return todo
 
-@app.get("/todos", response_model=list[TodoResponse])
+@todo_routes.get("", response_model=list[TodoResponse], status_code=status.HTTP_200_OK)
 async def get_all_todos(db: AsyncSession = Depends(get_db)):
     result = await db.execute(select(TodoModel))
-    # print(result.scalar())
     todos = result.scalars().all()
     return todos
 
-@app.get("/todos/{todo_id}", response_model=TodoResponse)
+@todo_routes.get("/{todo_id}", response_model=TodoResponse)
 async def get_todo(todo_id: UUID, db: AsyncSession = Depends(get_db)):
     result = await db.execute(select(TodoModel).where(TodoModel.id == todo_id))
     todo = result.scalar_one_or_none()
@@ -74,7 +55,7 @@ async def get_todo(todo_id: UUID, db: AsyncSession = Depends(get_db)):
         raise HTTPException(status_code=404, detail="Todo not found")
     return todo
 
-@app.put("/todos/{todo_id}", response_model=TodoResponse)
+@todo_routes.put("/{todo_id}", response_model=TodoResponse)
 async def update_todo(todo_id: UUID, todo_in: TodoUpdate, db: AsyncSession = Depends(get_db)):
     result = await db.execute(select(TodoModel).where(TodoModel.id == todo_id))
     todo = result.scalar_one_or_none()
@@ -91,7 +72,7 @@ async def update_todo(todo_id: UUID, todo_in: TodoUpdate, db: AsyncSession = Dep
     await db.refresh(todo)
     return todo
 
-@app.delete("/todos/{todo_id}", status_code=status.HTTP_204_NO_CONTENT)
+@todo_routes.delete("/{todo_id}", status_code=status.HTTP_204_NO_CONTENT)
 async def delete_todo(todo_id: UUID, db: AsyncSession = Depends(get_db)):
     result = await db.execute(select(TodoModel).where(TodoModel.id == todo_id))
     todo = result.scalar_one_or_none()
